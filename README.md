@@ -3,7 +3,7 @@ nview - nano view
 
 | **Linux + Mac** |
 |-----------------|
-| [![Build status](https://travis-ci.org/d99kris/nview.svg?branch=master)](https://travis-ci.org/d99kris/nview) |
+| [![Build status](https://travis-ci.com/d99kris/nview.svg?branch=master)](https://travis-ci.com/d99kris/nview) |
 
 nview is a minimalistic image viewer, implemented in C++ / Qt.
 
