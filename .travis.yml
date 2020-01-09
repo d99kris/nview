@@ -11,6 +11,10 @@ addons:
       - qt5-default
       - qt5-qmake
 
+install:
+  - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew update && brew bundle; fi
+
 script:
   - qmake
   - make -s
