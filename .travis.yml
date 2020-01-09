@@ -1,0 +1,19 @@
+language:
+  - cpp
+
+os:
+  - linux
+  - osx
+
+addons:
+  apt:
+    packages:
+      - qt5-default
+      - qt5-qmake
+
+install:
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew update && brew bundle; fi
+
+script:
+  - qmake
+  - make -s
