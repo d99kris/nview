@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget* p_Parent)
                         if (m_Files.contains(newFile) || !IsSupportedFormat(newFile)) continue;
 
                         m_Files.push_back(newFile);
-                        if (newFile == QFileInfo(arg).filePath())
+                        if (newFile == QFileInfo(arg).absoluteFilePath())
                         {
                             m_FileIndex = i;
                         }
