@@ -7,6 +7,8 @@ nview - nano view
 
 nview is a minimalistic image viewer, implemented in C++ / Qt.
 
+![screenshot](/res/screenshot.png) 
+
 Usage
 =====
 Usage:
