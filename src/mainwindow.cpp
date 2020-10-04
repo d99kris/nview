@@ -242,7 +242,9 @@ void MainWindow::Exit()
 
 void MainWindow::RotateImage(const QString& p_Angle)
 {
-    int rv = QProcess::execute("mogrify -rotate " + p_Angle + " \"" + m_Files[m_FileIndex] + "\"");
+    const QString program = "mogrify";
+    const QStringList arguments = { "-rotate", p_Angle, m_Files[m_FileIndex] };
+    int rv = QProcess::execute(program, arguments);
 
     if (rv != 0)
     {
