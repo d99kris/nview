@@ -45,6 +45,7 @@ public:
 
 private:
     void RefreshImage(bool p_ResizeWindow = true);
+    QSharedPointer<QImage> LoadQImage(const QString& p_Path);
     QSharedPointer<QPixmap> LoadImage();
     void PlanPreload();
     bool IsSupportedFormat(const QString& p_Path);

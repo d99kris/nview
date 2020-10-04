@@ -389,12 +389,21 @@ void MainWindow::RefreshImage(bool p_ResizeWindow /*= true*/)
     }
 }
 
+QSharedPointer<QImage> MainWindow::LoadQImage(const QString& p_Path)
+{
+    QSharedPointer<QImage> image = QSharedPointer<QImage>(new QImage());
+    QImageReader imageReader(p_Path);
+    imageReader.setAutoTransform(true);
+    imageReader.read(image.get());
+    return image;
+}
+
 QSharedPointer<QPixmap> MainWindow::LoadImage()
 {
     QMutexLocker imagesLocker(&m_ImagesMutex);
     if (!m_Images.contains(m_FileIndex))
     {
-        m_Images[m_FileIndex] = QSharedPointer<QImage>(new QImage(m_Files.at(m_FileIndex)));
+        m_Images[m_FileIndex] = LoadQImage(m_Files.at(m_FileIndex));
     }
 
     QSharedPointer<QPixmap> pixmap = QSharedPointer<QPixmap>(new QPixmap());
@@ -482,7 +491,7 @@ void MainWindow::PreloadProcess()
             QMutexLocker imagesLocker(&m_ImagesMutex);
             if (!m_Images.contains(index))
             {
-                m_Images[index] = QSharedPointer<QImage>(new QImage(m_Files.at(index)));
+                m_Images[index] = LoadQImage(m_Files.at(index));
             }
         }
     }
