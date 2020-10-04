@@ -7,6 +7,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   PROGPATH="./nview.app/Contents/MacOS/nview"
 fi
 
-qmake && make -s && \
+qmake && make -s clean && make -s && \
 help2man -n "nano view" -N -o res/nview.1 ${PROGPATH}
 exit ${?}
