@@ -394,7 +394,7 @@ QSharedPointer<QImage> MainWindow::LoadQImage(const QString& p_Path)
     QSharedPointer<QImage> image = QSharedPointer<QImage>(new QImage());
     QImageReader imageReader(p_Path);
     imageReader.setAutoTransform(true);
-    imageReader.read(image.get());
+    imageReader.read(image.data());
     return image;
 }
 
