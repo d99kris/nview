@@ -11,7 +11,6 @@
 
 #include <iostream>
 
-#include <QDesktopWidget>
 #include <QDirIterator>
 #include <QFileDialog>
 #include <QFileInfo>
@@ -20,6 +19,7 @@
 #include <QMessageBox>
 #include <QMimeDatabase>
 #include <QProcess>
+#include <QScreen>
 #include <QThread>
 #include <QWindow>
 
@@ -354,7 +354,7 @@ void MainWindow::RefreshImage(bool p_ResizeWindow /*= true*/)
 
     QSharedPointer<QPixmap> pixmap = LoadImage();
     const float screenUsage = (windowHandle()->visibility() & QWindow::FullScreen) ? 1.0 : 0.7;
-    QSize size = QDesktopWidget().availableGeometry(this).size() * screenUsage;
+    QSize size = QGuiApplication::primaryScreen()->availableGeometry().size() * screenUsage;
 
 #if QT_VERSION >= 0x050600
     qreal dpr = devicePixelRatioF();

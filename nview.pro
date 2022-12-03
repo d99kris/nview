@@ -3,7 +3,7 @@ TEMPLATE             = app
 CONFIG              += c++11 debug cmdline
 QT                  += core gui widgets
 
-DEFINES             += VERSION="\\\"0.22\\\""
+DEFINES             += VERSION="\\\"0.23\\\""
 
 SOURCES              = src/application.cpp \
                        src/main.cpp \
