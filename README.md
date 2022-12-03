@@ -57,7 +57,7 @@ Linux / Ubuntu
 
 **Build**
 
-    qmake && make -s
+    mkdir -p build && cd build && qmake .. && make -s
 
 **Install**
 
@@ -76,7 +76,7 @@ macOS
 
 **Build**
 
-    qmake && make -s
+    mkdir -p build && cd build && qmake .. && make -s
 
 **Installation**
 

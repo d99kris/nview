@@ -1,9 +1,9 @@
 TARGET               = nview
 TEMPLATE             = app
-CONFIG              += c++11 debug
+CONFIG              += c++11 debug cmdline
 QT                  += core gui widgets
 
-DEFINES             += VERSION="\\\"0.20\\\""
+DEFINES             += VERSION="\\\"0.22\\\""
 
 SOURCES              = src/application.cpp \
                        src/main.cpp \
@@ -20,16 +20,10 @@ isEmpty(PREFIX) {
   PREFIX             = /usr/local
 }
 
-program.path         = $$PREFIX/bin
-macx: {
-  program.files      = nview.app/Contents/MacOS/nview
-}
-unix:!macx {
-  program.files      = nview
-}
+target.path          = $$PREFIX/bin
 
 manpage.path         = $$PREFIX/share/man/man1
 manpage.files        = res/nview.1
 
-INSTALLS            += program manpage
+INSTALLS            += target manpage
 
