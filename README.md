@@ -68,7 +68,7 @@ macOS
 
 **Dependencies**
 
-    brew install qt5 imagemagick && brew link --force qt5
+    brew install imagemagick qt
 
 **Source**
 
