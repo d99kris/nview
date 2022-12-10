@@ -479,7 +479,7 @@ void MainWindow::PreloadProcess()
 {
     while (m_Running)
     {
-        QMutexLocker preloadsLocker(&m_PreloadsMutex);
+        m_PreloadsMutex.lock();
         while (m_Preloads.empty() && m_Running)
         {
             m_PreloadsWait.wait(&m_PreloadsMutex);
@@ -488,14 +488,20 @@ void MainWindow::PreloadProcess()
         while (!m_Preloads.empty() && m_Running)
         {
             int index = m_Preloads.takeFirst();
-            preloadsLocker.unlock();
+            m_PreloadsMutex.unlock();
 
-            QMutexLocker imagesLocker(&m_ImagesMutex);
-            if (!m_Images.contains(index))
             {
+              QMutexLocker imagesLocker(&m_ImagesMutex);
+              if (!m_Images.contains(index))
+              {
                 m_Images[index] = LoadQImage(m_Files.at(index));
+              }
             }
+
+            m_PreloadsMutex.lock();
         }
+
+        m_PreloadsMutex.unlock();
     }
 }
 
