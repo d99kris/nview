@@ -1,6 +1,6 @@
 // main.cpp
 //
-// Copyright (C) 2020 Kristofer Berggren
+// Copyright (C) 2020-2022 Kristofer Berggren
 // All rights reserved.
 //
 // nview is distributed under the GPLv2 license, see LICENSE for details.
@@ -11,6 +11,7 @@
 #include <iostream>
 
 #include "application.h"
+#include "version.h"
 
 static void ShowHelp()
 {
@@ -50,7 +51,7 @@ static void ShowVersion()
   std::cout <<
     "nview v" VERSION "\n"
     "\n"
-    "Copyright (C) 2020 Kristofer Berggren\n"
+    "Copyright (C) 2020-2022 Kristofer Berggren\n"
     "This is free software; see the source for copying\n"
     "conditions. There is NO warranty; not even for\n"
     "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"

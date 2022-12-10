@@ -3,8 +3,6 @@ TEMPLATE             = app
 CONFIG              += c++11 debug cmdline
 QT                  += core gui widgets
 
-DEFINES             += VERSION="\\\"0.23\\\""
-
 SOURCES              = src/application.cpp \
                        src/main.cpp \
                        src/mainwindow.cpp \
@@ -12,7 +10,8 @@ SOURCES              = src/application.cpp \
 
 HEADERS              = src/application.h \
                        src/mainwindow.h \
-                       src/preloadthread.h
+                       src/preloadthread.h \
+                       src/version.h
 
 FORMS                = src/mainwindow.ui
 
