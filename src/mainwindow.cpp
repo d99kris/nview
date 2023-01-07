@@ -1,6 +1,6 @@
 // mainwindow.cpp
 //
-// Copyright (C) 2020 Kristofer Berggren
+// Copyright (C) 2020-2023 Kristofer Berggren
 // All rights reserved.
 //
 // nview is distributed under the GPLv2 license, see LICENSE for details.
@@ -70,15 +70,19 @@ MainWindow::MainWindow(QWidget* p_Parent)
             }
             else if (QFileInfo(arg).isDir())
             {
+                QStringList dirFiles;
                 QDirIterator it(arg, QDir::Files, QDirIterator::Subdirectories);
                 while (it.hasNext())
                 {
                     it.next();
                     QString newFile = it.filePath();
-                    if (m_Files.contains(newFile) || !IsSupportedFormat(newFile)) continue;
+                    if (m_Files.contains(newFile) || dirFiles.contains(newFile) || !IsSupportedFormat(newFile)) continue;
 
-                    m_Files.push_back(newFile);
+                    dirFiles.push_back(newFile);
                 }
+
+                dirFiles.sort();
+                m_Files += dirFiles;
             }
         }
     }
