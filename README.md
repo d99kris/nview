@@ -44,12 +44,18 @@ Supported Platforms
 nview is primarily developed and tested on macOS, but basic functionality should work in Linux
 as well.
 
-Linux / Ubuntu
-==============
+Ubuntu
+======
 
-**Dependencies**
+**Dependencies 20.04**
 
     sudo apt install qt5-default qt5-qmake imagemagick
+
+**Dependencies 22.04**
+
+
+    sudo apt install qmake6 libqt6core6 libqt6gui6 libqt6widgets6
+    sudo apt install qt6-base-dev
 
 **Source**
 
