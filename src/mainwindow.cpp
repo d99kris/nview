@@ -354,7 +354,12 @@ void MainWindow::CopyImage()
 
 void MainWindow::RefreshImage(bool p_ResizeWindow /*= true*/)
 {
-    if (m_Files.size() <= m_FileIndex) return;
+    if (m_FileIndex >= m_Files.size())
+    {
+      MsgDialog("No more images, exiting.");
+      Exit();
+      return;
+    }
 
     QSharedPointer<QPixmap> pixmap = LoadImage();
     const float screenUsage = (windowHandle()->visibility() & QWindow::FullScreen) ? 1.0 : 0.7;
