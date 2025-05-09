@@ -55,7 +55,7 @@ private:
     Ui::MainWindow *m_Ui;
     QStringList m_Files;
     int m_FileIndex = 0;
-    QMap<int, QSharedPointer<QImage>> m_Images;
+    QMap< int, QSharedPointer<QImage> > m_Images;
     QMutex m_ImagesMutex;
     QList<int> m_Preloads;
     QMutex m_PreloadsMutex;
