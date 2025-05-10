@@ -2,7 +2,7 @@
 
 # make.sh
 #
-# Copyright (C) 2020-2022 Kristofer Berggren
+# Copyright (C) 2020-2025 Kristofer Berggren
 # All rights reserved.
 #
 # See LICENSE for redistribution information.
@@ -70,7 +70,7 @@ if [[ "${DEPS}" == "1" ]]; then
   if [ "${OS}" == "Linux" ]; then
     DISTRO="$(lsb_release -i | awk -F':\t' '{print $2}')"
     if [[ "${DISTRO}" == "Ubuntu" ]]; then
-      sudo apt -y install qt5-default qt5-qmake imagemagick || exiterr "deps failed (linux), exiting."
+      sudo apt -y install qmake6 libqt6core6 libqt6gui6 libqt6widgets6 qt6-base-dev || exiterr "deps failed (linux), exiting."
     else
       exiterr "deps failed (unsupported linux distro ${DISTRO}), exiting."
     fi
@@ -86,11 +86,13 @@ if [[ "${BUILD}" == "1" ]]; then
   OS="$(uname)"
   MAKEARGS=""
   if [ "${OS}" == "Linux" ]; then
+    QMAKE="qmake6"
     MAKEARGS="-j$(nproc)"
   elif [ "${OS}" == "Darwin" ]; then
+    QMAKE="qmake"
     MAKEARGS="-j$(sysctl -n hw.ncpu)"
   fi
-  mkdir -p build && cd build && qmake .. && make ${MAKEARGS} && cd .. || exiterr "build failed, exiting."
+  mkdir -p build && cd build && ${QMAKE} .. && make ${MAKEARGS} && cd .. || exiterr "build failed, exiting."
 fi
 
 # tests
