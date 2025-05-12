@@ -22,12 +22,11 @@
 #include <QThread>
 
 #if QT_VERSION >= 0x050000
-    #include <QWindow>
-    #include <QMimeDatabase>
+#include <QMimeDatabase>
+#include <QWindow>
 #else
-    #include <QDesktopWidget>
-    // Fallback using qt4-mimetypes library.
-    #include <QtMimeTypes/QMimeDatabase>
+#include <QDesktopWidget>
+#include <QtMimeTypes/QMimeDatabase>
 #endif
 
 #include "preloadthread.h"
