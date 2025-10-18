@@ -1,6 +1,6 @@
 // mainwindow.cpp
 //
-// Copyright (C) 2020-2024 Kristofer Berggren
+// Copyright (C) 2020-2025 Kristofer Berggren
 // All rights reserved.
 //
 // nview is distributed under the GPLv2 license, see LICENSE for details.
@@ -407,13 +407,13 @@ void MainWindow::RefreshImage(bool p_ResizeWindow /*= true*/)
     qreal dpr = 1.0;
 #endif
 
-    size.setWidth(size.width() * dpr);
-    size.setHeight(size.height() * dpr);
-
     if ((pixmap->size().width() < size.width()) && (pixmap->size().height() < size.height()))
     {
         size = pixmap->size();
     }
+
+    size.setWidth(size.width() * dpr);
+    size.setHeight(size.height() * dpr);
 
     m_Ui->label->setMinimumSize(1, 1);
     m_Ui->label->setScaledContents(false);
@@ -421,7 +421,7 @@ void MainWindow::RefreshImage(bool p_ResizeWindow /*= true*/)
     const QPixmap& scaledPixmap = pixmap->scaled(size, Qt::KeepAspectRatio);
     m_Ui->label->setPixmap(scaledPixmap);
 
-    const int scalePercentage = (100 * scaledPixmap.size().width()) / pixmap->size().width();
+    const int scalePercentage = (100 * scaledPixmap.size().width() / dpr) / pixmap->size().width();
     setWindowTitle("nview - " + QFileInfo(m_Files[m_FileIndex]).fileName() + " - " +
                    QString::number(pixmap->size().width()) + "x" + QString::number(pixmap->size().height()) + " - " +
                    QString::number(scalePercentage) + "%");
