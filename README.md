@@ -49,12 +49,12 @@ Ubuntu
 
 **Dependencies 20.04**
 
-    sudo apt install qt5-default qt5-qmake imagemagick
+    sudo apt install qt5-default cmake imagemagick
 
 **Dependencies 22.04**
 
 
-    sudo apt install qmake6 libqt6core6 libqt6gui6 libqt6widgets6
+    sudo apt install cmake libqt6core6 libqt6gui6 libqt6widgets6
     sudo apt install qt6-base-dev
 
 **Source**
@@ -63,7 +63,7 @@ Ubuntu
 
 **Build**
 
-    mkdir -p build && cd build && qmake .. && make -s
+    mkdir -p build && cd build && cmake .. && make -s
 
 **Install**
 
@@ -74,7 +74,7 @@ macOS
 
 **Dependencies**
 
-    brew install imagemagick qt
+    brew install cmake imagemagick qt
 
 **Source**
 
@@ -82,7 +82,7 @@ macOS
 
 **Build**
 
-    mkdir -p build && cd build && qmake .. && make -s
+    mkdir -p build && cd build && cmake .. && make -s
 
 **Installation**
 
